@@ -10,7 +10,7 @@ import kp from './keypair.json'
 
 // Constants
 // SystemProgram is a reference to the Solana runtime!
-const { SystemProgram, Keypair } = web3;
+const { SystemProgram } = web3;
 
 // Connect Keypair from keypair.json
 const arr = Object.values(kp._keypair.secretKey)
@@ -169,7 +169,7 @@ const App = () => {
             {/* We use index as the key instead, also, the src is now item.gifLink */}
             {gifList.map((item, index) => (
               <div className="gif-item" key={index}>
-                <img src={item.gifLink} />
+                <img src={item.gifLink} alt={"gif "+ index} />
                 <p className="gif-sub-text">{item.userAddress.toString()}</p>
               </div>
             ))}
@@ -206,6 +206,7 @@ const App = () => {
       console.log('Fetching GIF list...');
       getGifList()
     }
+    // eslint-disable-next-line
   }, [walletAddress]);
 
   return (
